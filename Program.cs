@@ -19,23 +19,23 @@ try
             {
                 if (Char.IsLower(c))
                 {
-                    lowerCount = lowerCount + 1;
+                    lowerCount ++;
                 }
 
                 if (Char.IsUpper(c))
                 {
-                    upperCount = upperCount + 1;
+                    upperCount ++;
                 }
 
 
                 if (Char.IsPunctuation(c))
                 {
-                    punctuationCount = punctuationCount + 1;
+                    punctuationCount++;
                 }
 
                 if (Char.IsDigit(c))
                 {
-                    digitCount = digitCount + 1;
+                    digitCount++;
                 }
 
 
