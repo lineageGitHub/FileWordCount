@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics.Tracing;
 using System.IO;
+using System.Reflection.Metadata;
+
 try
 {
     int lowerCount = 0;
@@ -8,6 +10,7 @@ try
     int overallCount = 0;
     int punctuationCount = 0;
     int digitCount = 0;
+    IDictionary<string, int> map = new Dictionary<string, int>();
 
     StreamReader sr = new StreamReader("C:\\Users\\guyb\\Nextcloud\\Programming\\C#\\Practicles\\Week 4\\FileWordCount\\FileWordCount\\story.txt");
     string[] chrList = sr.ReadToEnd().Split(" ");
@@ -19,7 +22,8 @@ try
             {
                 if (Char.IsLower(c))
                 {
-                    lowerCount ++;
+                    lowerCount++;
+
                 }
 
                 if (Char.IsUpper(c))
@@ -38,6 +42,18 @@ try
                     digitCount++;
                 }
 
+                if (char.IsLetter(c))
+                {
+                    if (map.ContainsKey(c.ToString()))
+                    {
+                        map[c.ToString()]++;
+
+                    }
+                    else
+                    {
+                        map[c.ToString()] = 1;
+                    }
+                }
 
             }
 
@@ -51,6 +67,10 @@ try
     Console.WriteLine("Puntuation: " + punctuationCount);
     Console.WriteLine("Digits: " + digitCount);
     Console.WriteLine("Overall letters: " + overallCount);
+    foreach (var i in map)
+    {
+        Console.WriteLine(i.Key + " : " + i.Value);
+    }
 
 
 }catch(Exception ex)
